@@ -48,7 +48,9 @@ if submit:
   doc_ref.update( {row['MatchId']: team_selected } )
   st.write('Your response has been submitted, good luck!')
 
+
 # Loop through all players data and show the current selection
+st.write('Player preferences for upcoming match')
 choicelist = []
 for player in players:
   tempdoc_ref = db.collection("users").document(player)
@@ -64,7 +66,7 @@ if choices.shape[0] > 0:
   st.write(choices)
                                                  
 
-st.write('Hold on, generating a summary')
+st.write('Player preferences historical summary')
 
 summary = []
 for player in players:
@@ -82,4 +84,5 @@ for player in players:
 
 pd.set_option("display.precision", 0)
 summary = pd.DataFrame(summary)
+summary.fillna(0)
 st.write(summary)
