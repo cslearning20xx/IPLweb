@@ -34,7 +34,7 @@ row = dftemp.iloc[0]
 st.write( "Welcome! Please submit you response for ", row['Team1'], " v/s", row['Team2'], " match at ", row['Time'])
 
 # Select user who wants to submit response. There could be more sophisticated setup with login/pwd, but keeping it simple for this example
-players = ( 'Player 1', 'Player 2','Player 3','Player 4','Player 5')
+players = ( 'Player 1', 'Player 2','Player 3')
 user = st.selectbox( 'Please chose your login name', players )
 
 team_selected = st.selectbox( 'Please chose your team', ( 'None', row['Team1'], row['Team2'] ))                                                  
