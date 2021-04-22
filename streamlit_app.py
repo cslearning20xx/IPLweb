@@ -84,5 +84,5 @@ for player in players:
 
 pd.set_option("display.precision", 0)
 summary = pd.DataFrame(summary)
-summary.fillna(0)
+summary = summary.fillna(0)
 st.write(summary)
