@@ -64,22 +64,22 @@ if choices.shape[0] > 0:
   st.write(choices)
                                                  
 
-# st.write('Hold on, generating a summary')
+st.write('Hold on, generating a summary')
 
-# summary = []
-# for player in players:
-#   tempdoc_ref = db.collection("users").document(player)
-#   tempdoc = tempdoc_ref.get()
+summary = []
+for player in players:
+  tempdoc_ref = db.collection("users").document(player)
+  tempdoc = tempdoc_ref.get()
 
-#   vals = list(tempdoc.to_dict().values())  
-#   tempdict = {"Player": player }
-#   freq = {}
-#   for items in vals:
-#     freq[items] = vals.count(items)
+  vals = list(tempdoc.to_dict().values())  
+  tempdict = {"Player": player }
+  freq = {}
+  for items in vals:
+    freq[items] = vals.count(items)
     
-#   tempdict.update(freq)
-#   summary.append( tempdict )
+  tempdict.update(freq)
+  summary.append( tempdict )
 
-# pd.set_option("display.precision", 0)
-# summary = pd.DataFrame(summary)
-# st.write(summary)
+pd.set_option("display.precision", 0)
+summary = pd.DataFrame(summary)
+st.write(summary)
