@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ipl-2021-challenge",
+  "private_key_id": "a87df049a427e4434c5494284c5ed09ca27665d9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCovSdGZqCuunZE\nYI6azRbKEsIkOB42gbLf3/8htpfZFApKsely1S9Hj62BbNLyo5ejNYc7OqNOg8wm\nP5k33lIgv+eM7PhjZanZeMf/TJitykq9zaTfoeb68GhMTPT+qJZRo7OXgfBT2u32\nyB6TcHtXbR+WhQdkBMnzXDhB8mstmLKL48zcSFkhPHxPxFWYo5IzG6RyHxH0Z84T\n9x0lFDdPJ5RwlTgz/mXaVEroyc00tTn8FrUSwHbK5AgwYrfu60hkSnPv0nQZGY9A\naI95tr4Ggwpn7PgIWpCMvtH+svd7Je3yfetvjmKboGEQ3ZaQpnxi7I6w4JUtk48V\no3a/obrzAgMBAAECggEAAnE/Qnw1Zf7aIi7WAZTN+D2bRJQkKjY1Ls5hAZqEY8Av\n6FlFssOcYpT7nIlegeQvGE3fCwY6dOZHEmRBq7BZHSyjhZB5UlIw/WFx+HA7llBj\nEpCjPhie096ejXQtTtfr2eF2HDXleTrZaB5vatzqIoYFOtPqgauCeZywTiwPGkk6\n6KIsVjaORGDVuQ8lM6N0RzUii+x43fy8UeYLQMmP6T4bKnk7Mx1J7zUvgfWfEndW\nY071sfFMsFTDntfpw7Tydl1VZw2gsJxPuLTLw9pAhxoVZxY5W1hTfUUE51iKkPJF\n2AU5j7Q+DV0mBZgwQchdQ5wdlyLPeoSJUsGKMOKmCQKBgQDXqQWbjzl0jzOTcuSd\nPsxQ48kKy5he95plc6t1XP+iIFKb0kVGjj86VcDqtOP+p9r2l4Ld7TI11NzNrLjE\n/g+5WPwdg1XnK0+MkrWWZEwhMu7f5P2jMQ9qABUua4ztnIqbvVxIl6iUkR0jIQ7s\nEBJS9cJOthyHOLjLyl3yb8C+twKBgQDITUh52JxWeVdOlDTEZD4nD8qY7ti+FxZM\njN/hvdI4xxa1pE3fhtl/C0Na0fQZ+40eke4Vnw2f5L3/oFeVBS0DpwXb590SZZyV\nGyCTVDzm1m+0iBv01D+lEPpyFv7ggGk8UqMEcrHktWUgzlcnMMyNZM30L41tuekb\n5RTK2YCppQKBgBEjRWbPQumYV6joAHLegq4K6/cHptwlIQfe4Uk6UrY3i1kGpKqu\nsyeXmPUN2vBptmTSNXwdVVghykot56D/74/zGlXeEf2E25V4MyX4YnRg78qrD9zg\nETGDQCuoMFLRldI6ghLiumrT/VTFU8I+pLYjAYXvwuScBVNsiXqylsaRAoGAAiVB\nx3xYgFygYMkZn5jrSYPTybuVOsQIix1fMI3V+KG5TozKAMDzB3dZa1mgYb7eDhvG\nDxk7DiFnH5vaFFCP4OAjIe3j4lSQTtCRksJuPJLDc42Zrw+u9tettxcj98eoWOsR\nr/SCj06aHLXZHSRarJEN27W+sBQzuQbFKD8YL7kCgYAgU5cy+nCCo7Ul6yJ5niNn\nJmiZsddq7dPzoSBHenRp8WMxfo2501alAaBBMxTPPd+sY3ZHiOZO7FCaKL6PedmE\n5u7J0Uprh2UIc0TAtQL5lQdtDlsJX1PDGZ80bFLoqY42xY8XKyhc/pow0lQoixHn\naQS+fEE0DMd4tUfd18FI7Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-v458g@ipl-2021-challenge.iam.gserviceaccount.com",
+  "client_id": "115649452757614713059",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-v458g%40ipl-2021-challenge.iam.gserviceaccount.com"
+}
