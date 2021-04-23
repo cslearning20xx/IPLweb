@@ -52,7 +52,7 @@ submit = st.sidebar.button('Submit Response')
 # If user clicks on submit response then store that selection as an update to existing dataset
 if submit: 
   doc_ref.update( {row['MatchId']: team_selected } )
-  st.write('Your response has been submitted, good luck!')
+  st.sidebar.write('Your response has been submitted, good luck!')
 
 
 # Loop through all players data and show the current selection
@@ -67,11 +67,10 @@ for player in players:
     print("ignore error")
               
 choices = pd.DataFrame(choicelist)
-if choices.shape[0] > 0:
-  fig, ax = plt.subplots(figsize= (4,4) )
-  choices.plot.pie(y = 'Choice',ax = ax)
-  ax.set_title("'Player preferences for upcoming match'")  
-  st.pyplot(fig)
+if choices.shape[0] > 0: 
+  st.sidebar.markdown('#')
+  st.sidebar.write("Player preferences for upcoming match")  
+  st.sidebar.write(choices)
 else:
   st.write('No player has submitted preference for upcoming match yet!')
                                                  
