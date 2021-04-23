@@ -4,3 +4,4 @@ datetime
 pytz
 pandas
 seaborn
+matplotlib
