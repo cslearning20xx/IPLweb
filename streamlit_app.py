@@ -56,7 +56,6 @@ if submit:
 
 
 # Loop through all players data and show the current selection
-
 choicelist = []
 for player in players:
   tempdoc_ref = db.collection("users").document(player)
@@ -69,8 +68,10 @@ for player in players:
               
 choices = pd.DataFrame(choicelist)
 if choices.shape[0] > 0:
-  st.write('Player preferences for upcoming match')
-  st.write(choices)
+  fig, ax = plt.subplots(figsize= (4,4) )
+  choices.plot.pie(y = 'Choice',ax = ax)
+  ax.set_title("'Player preferences for upcoming match'")  
+  st.pyplot(fig)
 else:
   st.write('No player has submitted preference for upcoming match yet!')
                                                  
