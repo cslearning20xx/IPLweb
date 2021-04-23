@@ -82,7 +82,7 @@ for player in players:
   vals = list(tempdoc.to_dict().values())  
   successcount = ( pd.Series(list) == df_played['Winner'])   
   tempdict = {"Player": player }
-  succes_tracker = {"Player": player, "SuccessRate", successcount.sum() * 100/matches_played }
+  succes_tracker = {"Player": player, "SuccessRate": successcount.sum() * 100/matches_played }
   success.append( succes_tracker)
   
   freq = {}
