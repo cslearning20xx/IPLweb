@@ -47,7 +47,7 @@ team_selected = st.sidebar.selectbox( 'Please chose your team', ( 'None', row['T
 
 # From the firestore client get the handle for the user
 doc_ref = db.collection("users").document(user)
-submit = st.button('Submit Response')
+submit = st.sidebar.button('Submit Response')
 
 # If user clicks on submit response then store that selection as an update to existing dataset
 if submit: 
@@ -111,10 +111,11 @@ df.rename(columns = {"index": "Team"}, inplace= True)
 
 fig, ax = plt.subplots() 
 ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
-ax.set_title("Relative team preferences")
+ax.set_title("Relative Team Preferences")
 st.pyplot(fig)
 
-fig, ax = plt.subplots() 
+fig, ax = plt.subplots(figsize= (12,3) )
 ax = sns.barplot(y = 'Player', x = "SuccessRate", data = success)
-ax.set_title("Prediction success rate(%)")
+ax.set_title("Prediction Success Rate(%)")
+ax.set_xlim(0,100)
 st.pyplot(fig)
