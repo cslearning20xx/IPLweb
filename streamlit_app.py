@@ -78,18 +78,18 @@ summary = []
 success = []
 for player in players:
   tempdoc_ref = db.collection("users").document(player)
-  tempdoc = tempdoc_ref.get()  
-  vals = list(tempdoc.to_dict().values())  
-  winners = df_played['Winner'].tolist()
-  
+  tempdoc = tempdoc_ref.get().to_dict()  
+  vals = list(tempdoc.values())    
+
   successcount = 0
   for i in range(matches_played):
-    if vals[i] == winners[i]:      
-      successcount +=1
-      
+      idx = df_played[df_played['MatchId'] == "Match" + str(i+1)].index
+      winner = df_played.iloc[idx]['Winner'].values[0]
+      if tempdoc["Match"+ str(i +1)] == winner:
+          successcount +=1
+        
   tempdict = {"Player": player }  
   success.append( {"Player": player, "SuccessRate": successcount * 100/matches_played } )
-  st.write({"Player": player, "SuccessRate": successcount * 100/matches_played })
   
   freq = {}
   for items in vals:
@@ -108,10 +108,12 @@ df = df *100/max(df)
 df = df.to_frame(name = "Relative preference").reset_index()
 df.rename(columns = {"index": "Team"}, inplace= True)
 
-fig, ax = plt.subplots() 
-ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
-ax.set_title("Relative team preferences as of now")
-st.pyplot(fig)
+fig, ax = plt.subplots(1,2,  gridspec_kw={'width_ratios': [2, 3]}) 
+sns.barplot(x = 'Team', y = "Relative preference", data = df, ax = ax[0])
+ax[0].set_title("Relative team preferences as of now")
 
 success = pd.DataFrame(success)
-st.write(success)
+sns.barplot(x = 'Player', y = "Prediction success rate", data = success, ax = ax[1])
+ax[1].set_title("Relative team preferences as of now")
+
+st.pyplot(fig)
