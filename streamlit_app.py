@@ -50,7 +50,7 @@ if submit:
 
 
 # Loop through all players data and show the current selection
-st.write('Player preferences for upcoming match')
+
 choicelist = []
 for player in players:
   tempdoc_ref = db.collection("users").document(player)
@@ -63,11 +63,11 @@ for player in players:
               
 choices = pd.DataFrame(choicelist)
 if choices.shape[0] > 0:
+  st.write('Player preferences for upcoming match')
   st.write(choices)
+else:
+  st.write('No player has submitted preference for upcoming match yet!')
                                                  
-
-st.write('Player preferences historical summary')
-
 summary = []
 for player in players:
   tempdoc_ref = db.collection("users").document(player)
@@ -84,5 +84,13 @@ for player in players:
 
 pd.set_option("display.precision", 0)
 summary = pd.DataFrame(summary)
-summary = summary.fillna(0)
-st.write(summary)
+
+df = summary.mean(axis = 0)
+df.sort_values(ascending = False, inplace = True)
+df = df *100/max(df)
+df = df.to_frame(name = "Relative preference").reset_index()
+df.rename(columns = {"index": "Team"}, inplace= True)
+fig, ax = plt.subplots() 
+ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
+ax.set_title("Relative team preferences as of now")
+st.pyplot(fig)
