@@ -102,6 +102,8 @@ pd.set_option("display.precision", 0)
 summary = pd.DataFrame(summary)
 success = pd.DataFrame(success)
 
+st.tile('IPL 2021 Fantasy Challenge')
+        
 df = summary.mean(axis = 0)
 df.drop(labels= ["None"], inplace = True )
 df.sort_values(ascending = False, inplace = True)
