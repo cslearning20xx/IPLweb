@@ -114,7 +114,7 @@ ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
 ax.set_title("Relative Team Preferences")
 st.pyplot(fig)
 
-fig, ax = plt.subplots(figsize= (12,3) )
+fig, ax = plt.subplots(figsize= (12,5) )
 ax = sns.barplot(y = 'Player', x = "SuccessRate", data = success)
 ax.set_title("Prediction Success Rate(%)")
 ax.set_xlim(0,100)
