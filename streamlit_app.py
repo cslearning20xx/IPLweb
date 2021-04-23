@@ -115,6 +115,6 @@ ax.set_title("Relative team preferences as of now")
 st.pyplot(fig)
 
 fig, ax = plt.subplots() 
-ax = sns.barplot(x = 'Player', y = "SuccessRate", data = success, ax = ax[1])
+ax = sns.barplot(x = 'Player', y = "SuccessRate", data = success)
 ax.set_title("Prediction success rate")
 st.pyplot(fig)
