@@ -37,13 +37,13 @@ df_played = df[(df["Time1"] < currtime )  & ( len(df["Winner"]) > 0) ]
 matches_played = df_played.shape[0]
 
 # Present the user with information about playing teams and seek response
-st.write( "Welcome! Please submit you response for ", row['Team1'], " v/s", row['Team2'], " match at ", row['Time'])
+st.sidebar.write( "Welcome! Please submit you response for ", row['Team1'], " v/s", row['Team2'], " match at ", row['Time'])
 
 # Select user who wants to submit response. There could be more sophisticated setup with login/pwd, but keeping it simple for this example
 players = ( 'Player 1', 'Player 2','Player 3')
-user = st.selectbox( 'Please chose your login name', players )
+user = st.sidebar.selectbox( 'Please chose your login name', players )
 
-team_selected = st.selectbox( 'Please chose your team', ( 'None', row['Team1'], row['Team2'] ))                                                  
+team_selected = st.sidebar.selectbox( 'Please chose your team', ( 'None', row['Team1'], row['Team2'] ))                                                  
 
 # From the firestore client get the handle for the user
 doc_ref = db.collection("users").document(user)
@@ -111,10 +111,10 @@ df.rename(columns = {"index": "Team"}, inplace= True)
 
 fig, ax = plt.subplots() 
 ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
-ax.set_title("Relative team preferences as of now")
+ax.set_title("Relative team preferences")
 st.pyplot(fig)
 
 fig, ax = plt.subplots() 
-ax = sns.barplot(x = 'Player', y = "SuccessRate", data = success)
-ax.set_title("Prediction success rate")
+ax = sns.barplot(y = 'Player', x = "SuccessRate", data = success)
+ax.set_title("Prediction success rate(%)")
 st.pyplot(fig)
