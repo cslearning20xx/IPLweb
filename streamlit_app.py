@@ -83,8 +83,11 @@ for player in players:
   winners = df_played['Winner'].tolist()
   
   successcount = 0
-  len = max(len(vals), len(winners))
-  for i in range(len(vals)):
+  len = min(len(vals), len(winners))
+  st.write(len)
+  st.write(vals)
+  st.write(winners)
+  for i in range(len):
     if vals[i] == winners[i]:      
       successcount +=1
       
