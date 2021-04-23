@@ -108,7 +108,7 @@ df = df *100/max(df)
 df = df.to_frame(name = "Relative preference").reset_index()
 df.rename(columns = {"index": "Team"}, inplace= True)
 
-fig, ax = plt.subplots(1,2,  gridspec_kw={'width_ratios': [2, 3]}) 
+fig, ax = plt.subplots(1,2,  gridspec_kw={'width_ratios': [2, 1]}) 
 sns.barplot(x = 'Team', y = "Relative preference", data = df, ax = ax[0])
 ax[0].set_title("Relative team preferences as of now")
 
