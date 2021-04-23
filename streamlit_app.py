@@ -113,7 +113,7 @@ sns.barplot(x = 'Team', y = "Relative preference", data = df, ax = ax[0])
 ax[0].set_title("Relative team preferences as of now")
 
 success = pd.DataFrame(success)
-sns.barplot(x = 'Player', y = "Prediction success rate", data = success, ax = ax[1])
-ax[1].set_title("Relative team preferences as of now")
+sns.barplot(x = 'Player', y = "SuccessRate", data = success, ax = ax[1])
+ax[1].set_title("Prediction success rate")
 
 st.pyplot(fig)
