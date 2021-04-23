@@ -80,7 +80,7 @@ for player in players:
   tempdoc_ref = db.collection("users").document(player)
   tempdoc = tempdoc_ref.get()  
   vals = list(tempdoc.to_dict().values())  
-  successcount = ( pd.Series(list) == df_played['Winner'])   
+  successcount = ( vals == df_played['Winner'].tolist())   
   tempdict = {"Player": player }
   succes_tracker = {"Player": player, "SuccessRate": successcount.sum() * 100/matches_played }
   success.append( succes_tracker)
