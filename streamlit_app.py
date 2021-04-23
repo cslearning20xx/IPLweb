@@ -21,9 +21,10 @@ db = firestore.Client.from_service_account_json("firestorekey.json")
 tz_India = pytz.timezone('Asia/Calcutta') 
 currtime = datetime.now(tz_India)
 
-# Read the dataset containing information on MatchId, Team1, Team2 and match time as per preannounced schedule
+# Read the dataset containing information on MatchId, Team1, Team2, Winner and match time as per preannounced schedule
 df = pd.read_csv('IPLdata.csv', parse_dates= ['Time'])
 s = pd.to_datetime(df['Time'])
+matches_total = df.shape[0]
 
 # Need this to make the timestamp timezone aware else it causes error while comparing tz-aware and tz-naive types
 df['Time1'] = s.dt.tz_localize('Asia/Calcutta')
@@ -31,6 +32,9 @@ df['Time1'] = s.dt.tz_localize('Asia/Calcutta')
 # Pick all matches yet to be played and pick the first one for display
 dftemp = df[df["Time1"] > currtime ]
 row = dftemp.iloc[0]
+
+df_played = df[df["Time1"] < currtime ]
+matches_played = df_played.shape[0]
 
 # Present the user with information about playing teams and seek response
 st.write( "Welcome! Please submit you response for ", row['Team1'], " v/s", row['Team2'], " match at ", row['Time'])
@@ -71,12 +75,16 @@ else:
   st.write('No player has submitted preference for upcoming match yet!')
                                                  
 summary = []
+success = []
 for player in players:
   tempdoc_ref = db.collection("users").document(player)
-  tempdoc = tempdoc_ref.get()
-
+  tempdoc = tempdoc_ref.get()  
   vals = list(tempdoc.to_dict().values())  
+  successcount = ( pd.Series(list) == df_played['Winner'])   
   tempdict = {"Player": player }
+  succes_tracker = {"Player": player, "SuccessRate", successcount.sum() * 100/matches_played }
+  success.append( succes_tracker)
+  
   freq = {}
   for items in vals:
     freq[items] = vals.count(items)
@@ -92,7 +100,11 @@ df.sort_values(ascending = False, inplace = True)
 df = df *100/max(df)
 df = df.to_frame(name = "Relative preference").reset_index()
 df.rename(columns = {"index": "Team"}, inplace= True)
+df = df[ df.Team != 'None']
 fig, ax = plt.subplots() 
 ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
 ax.set_title("Relative team preferences as of now")
 st.pyplot(fig)
+
+success = pd.DataFrame(success)
+st.write(success)
