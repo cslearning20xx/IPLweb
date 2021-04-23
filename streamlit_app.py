@@ -33,7 +33,7 @@ df['Time1'] = s.dt.tz_localize('Asia/Calcutta')
 dftemp = df[df["Time1"] > currtime ]
 row = dftemp.iloc[0]
 
-df_played = df[df["Time1"] < currtime ]
+df_played = df[(df["Time1"] < currtime )  & ( len(df["Winner"]) > 0) ]
 matches_played = df_played.shape[0]
 
 # Present the user with information about playing teams and seek response
@@ -83,11 +83,7 @@ for player in players:
   winners = df_played['Winner'].tolist()
   
   successcount = 0
-  len = min(len(vals), len(winners))
-  st.write(len)
-  st.write(vals)
-  st.write(winners)
-  for i in range(len):
+  for i in range(matches_played):
     if vals[i] == winners[i]:      
       successcount +=1
       
