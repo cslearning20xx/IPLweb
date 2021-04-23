@@ -100,6 +100,7 @@ for player in players:
 
 pd.set_option("display.precision", 0)
 summary = pd.DataFrame(summary)
+success = pd.DataFrame(success)
 
 df = summary.mean(axis = 0)
 df.drop(labels= ["None"], inplace = True )
@@ -108,12 +109,12 @@ df = df *100/max(df)
 df = df.to_frame(name = "Relative preference").reset_index()
 df.rename(columns = {"index": "Team"}, inplace= True)
 
-fig, ax = plt.subplots(1,2,  gridspec_kw={'width_ratios': [2, 1]}) 
-sns.barplot(x = 'Team', y = "Relative preference", data = df, ax = ax[0])
-ax[0].set_title("Relative team preferences as of now")
+fig, ax = plt.subplots() 
+ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
+ax.set_title("Relative team preferences as of now")
+st.pyplot(fig)
 
-success = pd.DataFrame(success)
-sns.barplot(x = 'Player', y = "SuccessRate", data = success, ax = ax[1])
-ax[1].set_title("Prediction success rate")
-
+fig, ax = plt.subplots() 
+ax = sns.barplot(x = 'Player', y = "SuccessRate", data = success, ax = ax[1])
+ax.set_title("Prediction success rate")
 st.pyplot(fig)
