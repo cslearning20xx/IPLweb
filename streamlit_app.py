@@ -80,10 +80,16 @@ for player in players:
   tempdoc_ref = db.collection("users").document(player)
   tempdoc = tempdoc_ref.get()  
   vals = list(tempdoc.to_dict().values())  
-  successcount = ( vals == df_played['Winner'].tolist())   
-  tempdict = {"Player": player }
-  succes_tracker = {"Player": player, "SuccessRate": sum(successcount) * 100/matches_played }
-  success.append( succes_tracker)
+  winners = df_played['Winner'].tolist()
+  
+  successcount = 0
+  len = max(len(vals), len(winners))
+  for i in range(len(vals)):
+    if vals[i] == winners[i]:      
+      successcount +=1
+      
+  tempdict = {"Player": player }  
+  success.append( {"Player": player, "SuccessRate": successcount * 100/matches_played } )
   
   freq = {}
   for items in vals:
