@@ -89,6 +89,7 @@ for player in players:
       
   tempdict = {"Player": player }  
   success.append( {"Player": player, "SuccessRate": successcount * 100/matches_played } )
+  st.write({"Player": player, "SuccessRate": successcount * 100/matches_played })
   
   freq = {}
   for items in vals:
@@ -101,11 +102,12 @@ pd.set_option("display.precision", 0)
 summary = pd.DataFrame(summary)
 
 df = summary.mean(axis = 0)
+df.drop(labels= ["None"], inplace = True )
 df.sort_values(ascending = False, inplace = True)
 df = df *100/max(df)
 df = df.to_frame(name = "Relative preference").reset_index()
 df.rename(columns = {"index": "Team"}, inplace= True)
-df = df[ df.Team != 'None']
+
 fig, ax = plt.subplots() 
 ax = sns.barplot(x = 'Team', y = "Relative preference", data = df)
 ax.set_title("Relative team preferences as of now")
